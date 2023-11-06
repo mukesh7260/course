@@ -1,0 +1,217 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>whooper Academy </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    {% comment %} <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> {% endcomment %}
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    {% comment %} <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet"> {% endcomment %}
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/mukeshstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mukeshstyle.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Montserrat'%}">
+</head>
+
+
+<body>
+    <div class="container-fluid px-0 px-md-5 mb-5" style="background-color:#832167;">
+        <div class="row align-items-center px-3">
+            {% comment %} <div class="col-lg-6 text-center text-lg-left ">
+                <img class="rounded-circle" src="{% static 'img/logo.jpeg' %}" style="width: 200px; height: 200px;" alt="Image">
+                <h3 class="mt-2 ">Whooper Academy </h3>
+            </div> {% endcomment %}
+            <div class="col-lg-12 text-center">
+                <h4 class="text-white mb-4 mt-5 mt-lg-0" style="font-family:Montserrat;">Whooper Academy Courses</h4>
+                <h1 class="display-3 font-weight-bold text-white" style="font-family:Montserrat;">New Approach to Course Education</h1>
+                <p class="text-white mb-4">Whooper Academy provides alot of courses like artificial intelligences , microservices , Python, data science , robotics courses.</p>
+            </div>
+            
+        </div>
+
+    </div>
+    <!-- Class Start -->
+    <div class="container-fluid pt-5">
+            <div class="container">
+                <div class="text-center pb-2">
+                    <p class="section-title px-5"><span class="px-2">Popular Courses</span></p>
+                    <h1 class="mb-4" style="font-family:Montserrat;">Courses for You</h1>
+                </div>
+                <div class="row">  
+                        {% for  data in  coursp %}  
+                            {% if data.sold %}     
+                                        <div class="col-lg-4 mb-5">
+                                            <div class="card border-0 bg-light shadow-sm pb-2 h-100">
+                                                    <img class="card-img-top mb-2" src="{{data.image.url}}"  alt="" height="200px">
+                                                    <div class="card-body text-center">
+                                                        <h4 class="card-title" style="font-family:Montserrat;">{{data.course_name}} </h4>
+                                                        <p class="card-text">{{data.course_details}}</p>
+                                                    </div>
+                                                    <div class="card-footer bg-transparent py-4 px-5"> 
+                                            
+                                                        <div class="row border-bottom">
+                                                            <div class="col-6 py-1 text-right border-right"><strong>Course Name</strong></div>
+                                                            <div class="col-6 py-1">{{data.course_name}}</div>
+                                                        </div> 
+                                                        <div class="row border-bottom">
+                                                            <div class="col-6 py-1 text-right border-right"><strong>Course Detail</strong></div>
+                                                            <div class="col-6 py-1">{{data.course_details}}</div>
+                                                        </div> 
+                                                        <div class="row border-bottom">
+                                                            <div class="col-6 py-1 text-right border-right"><strong>Lecture Details </strong></div>
+                                                            <div class="col-6 py-1">{{data.lecture_details}}</div>
+                                                        </div>
+                                                        <div class="row border-bottom">
+                                                            <div class="col-6 py-1 text-right border-right"><strong>Rating</strong></div>
+                                                            <div class="col-6 py-1">{{data.rating}}<i class="fa-solid fa-star"></i></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6 py-1 text-right border-right"><strong>Price</strong></div>
+                                                            <div class="col-6 py-1">{{data.price}}</div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6 py-1 text-right border-right"><strong>Course Update</strong></div>
+                                                            <div class="col-6 py-1">{{data.course_update}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="" class="btn btn-warning px-4 mx-auto mb-4">SOLD OUT FOR NOW</a>
+                                                    <a href="{% url 'inform-data' %}" class="btn btn-warning px-4 mx-auto mb-4">Join the wait list course</a>
+                                            </div>
+                                        </div>
+
+                                        {% else %}
+                                            <div class="col-lg-4 mb-5">
+                                                <div class="card border-0 bg-light shadow-sm pb-2 h-100">
+                                                        <img class="card-img-top mb-2" src="{{data.image.url}}"  alt="" height="200px">
+                                                        <div class="card-body text-center">
+                                                            <h4 class="card-title"style="font-family:Montserrat;">{{data.course_name}} </h4>
+                                                            <p class="card-text">{{data.course_details}}</p>
+                                                        </div>
+                                                        <div class="card-footer bg-transparent py-3 px-5"> 
+                                                
+                                                            <div class="row border-bottom">
+                                                                <div class="col-6 py-1 text-right border-right"><strong>Course Name</strong></div>
+                                                                <div class="col-6 py-1">{{data.course_name}}</div>
+                                                            </div> 
+                                                            <div class="row border-bottom">
+                                                                <div class="col-6 py-1 text-right border-right"><strong>Course Detail</strong></div>
+                                                                <div class="col-6 py-1">{{data.course_details}}</div>
+                                                            </div> 
+                                                            <div class="row border-bottom">
+                                                                <div class="col-6 py-1 text-right border-right"><strong>Lecture Details </strong></div>
+                                                                <div class="col-6 py-1">{{data.lecture_details}}</div>
+                                                            </div>
+                                                            <div class="row border-bottom">
+                                                                <div class="col-6 py-1 text-right border-right"><strong>Rating</strong></div>
+                                                                <div class="col-6 py-1">{{data.rating}}<i class="fa-solid fa-star"></i></div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-6 py-1 text-right border-right"><strong>Price</strong></div>
+                                                                <div class="col-6 py-1">{{data.price}}</div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-6 py-1 text-right border-right"><strong>Course Update</strong></div>
+                                                                <div class="col-6 py-1">{{data.course_update}}</div>
+                                                            </div>
+                                        
+                                                        </div>
+                                                        {% if data.order_count > 10 %}<a href="" class="btn btn-primary px-4 mx-auto mb-4">course enable</a>
+                                                            {% else %}
+                                                            <a href="{%url 'order' id=data.id %}" class="btn btn-success px-4 mx-auto mb-4">Buy Now</a>
+                                                            {% comment %} <a href="https://www.facebook.com/" class="btn btn-danger px-4 mx-auto mb-4">Share Now</a> {% endcomment %}
+                                                            <a href="{% url 'inform-data' %}" class="btn btn-success px-4 mx-auto mb-4">Coupon Code</a>
+                                                        {% endif %}
+                                                </div>
+                                            </div>
+
+                            {% endif %}     
+                                       
+                       {% endfor %}
+                </div>
+            </div>        
+    </div>
+     <!-- Blog Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2" style="font-family:Montserrat;">Latest Courses</span></p>
+                <h1 class="mb-4" style="font-family:Montserrat;" >Latest Courses from Whooper Academy</h1>
+            </div>
+            <div class="row pb-3 ">
+                <div class="col-lg-4  mb-4">
+                    <div class="card border-0 shadow-sm mb-2 h-100">
+                        <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class=""style="font-family:Montserrat;">Data Science. </h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Admin</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Web Design</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>
+                            </div>
+                            <p>Online Data Science & AI Program now powered by a Generative AI curriculum. Master more than 20 programming languages and tool in Data Science & AI and graduate with a WES recognised degree equivalent to a 1 year Postgraduate Diploma in Canada.
+                                Eligibility: Bachelor’s degree with 50% mandatory.
+                               </p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  mb-4">
+                    <div class="card border-0 shadow-sm mb-2 h-100">
+                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class=""style="font-family:Montserrat;">Web developer</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Admin</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Web Design</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>
+                            </div>
+                            <p>A web developer is a programmer who develops World Wide Web applications using a client–server model. The applications typically use HTML, CSS, and JavaScript in the client, and any general-purpose programming language in the server. HTTP is used for communications between client and server.</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  mb-4">
+                    <div class="card border-0 shadow-sm mb-2 h-100">
+                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class=""style="font-family:Montserrat;">Full stack web developer</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Admin</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Web Design</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>
+                            </div>
+                            <p>A full-stack developer helps build and maintain both the front-end and the back-end of a website. Learn about full-stack developer skills, salary, and how you can become one. A full-stack developer is a developer or engineer who can build both the front end and the back end of a website.</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+
+
+</html>
